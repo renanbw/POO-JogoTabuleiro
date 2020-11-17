@@ -38,5 +38,13 @@ public class JogoView {
         System.out.println("pressione enter para continuar");
         String nome  = scanner.nextLine();
     }
+    public static void recomecar() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("pressione enter para recomecar");
+        String nome  = scanner.nextLine();
+    }
+    public static void mostraGanhador(Jogador jog) {
+        System.out.println("O ganhador é: "+jog.getNome());
+    }
 
 }

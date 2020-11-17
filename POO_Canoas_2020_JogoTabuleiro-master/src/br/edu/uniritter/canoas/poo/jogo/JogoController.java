@@ -16,13 +16,16 @@ public class JogoController {
         tabuleiro = new Tabuleiro(50,20,20);
         qtdJogadores = JogoView.intQtdJogadores(2, 6);
         registrarJogadores();
-
+        //finalizado = tabuleiro.fim();
        while(! finalizado) {
            iniciarJogada();
            proximoJogador();
            TabuleiroView.showSituacaoAtual(tabuleiro);
+           System.out.println(tabuleiro.getQtdCasas());
        }
-
+       JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual));
+       JogoView.recomecar();
+       iniciarJogo();
     }
     private static void proximoJogador() {
         jogadorAtual++;
@@ -49,7 +52,7 @@ public class JogoController {
 
     }
 
-    public static void iniciarJogoOld() {
+    /*public static void iniciarJogoOld() {
         Tabuleiro tab = new Tabuleiro(50,20,20);
         try {
             tab.addJogador(new Jogador("Jean1"));
@@ -79,5 +82,5 @@ public class JogoController {
         for(int i = 0; i < tab.getJogadores().size(); i++) {
             System.out.println(tab.getJogadores().get(i));
         }
-    }
+    }*/
 }

@@ -1,5 +1,7 @@
 package br.edu.uniritter.canoas.poo.jogo.model;
 
+import br.edu.uniritter.canoas.poo.jogo.JogoController;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -72,5 +74,15 @@ public class Tabuleiro  {
     }
     public int getQtdCasas() {
         return this.casas.length;
+    }
+
+    public boolean fim(){
+        Jogador pos = null;
+        Tabuleiro tab = null;
+        if( tab.getQtdCasas() > pos.getPosicaoAtual() ){
+            return true;
+        } else {
+            return true;
+        }
     }
 }
