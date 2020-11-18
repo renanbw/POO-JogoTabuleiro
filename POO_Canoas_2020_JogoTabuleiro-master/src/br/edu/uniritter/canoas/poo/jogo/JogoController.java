@@ -10,18 +10,21 @@ public class JogoController {
     private static int jogadorAtual = 0;
     private static boolean finalizado = false;
     private static Dado dado = new Dado();
+    private static Jogador jog = null;
+    private static boolean fim = false;
     
 
     public static void iniciarJogo() {
         tabuleiro = new Tabuleiro(50,20,20);
         qtdJogadores = JogoView.intQtdJogadores(2, 6);
         registrarJogadores();
-        //finalizado = tabuleiro.fim();
+        fim = tabuleiro.getFinal(51, tabuleiro.getQtdCasas());
        while(! finalizado) {
            iniciarJogada();
            proximoJogador();
            TabuleiroView.showSituacaoAtual(tabuleiro);
-           System.out.println(tabuleiro.getQtdCasas());
+           System.out.println("O final é "+fim);
+           System.out.println("Posição atual do Jogador: "+tabuleiro.getJogadoresCasa(jogadorAtual));
        }
        JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual));
        JogoView.recomecar();
@@ -49,7 +52,6 @@ public class JogoController {
         Jogador jogador = null;
         jogador = tabuleiro.getJogadores().get(jogadorAtual);
         jogador.avanca(dado.jogar());
-
     }
 
     /*public static void iniciarJogoOld() {

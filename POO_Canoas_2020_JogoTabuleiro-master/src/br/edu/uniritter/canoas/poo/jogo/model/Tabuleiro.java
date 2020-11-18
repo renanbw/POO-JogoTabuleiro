@@ -76,13 +76,12 @@ public class Tabuleiro  {
         return this.casas.length;
     }
 
-    public boolean fim(){
-        Jogador pos = null;
-        Tabuleiro tab = null;
-        if( tab.getQtdCasas() > pos.getPosicaoAtual() ){
-            return true;
+    public boolean getFinal(int pos, int qtd){
+        if( qtd >= pos ){
+            return false;
         } else {
             return true;
         }
+
     }
 }
