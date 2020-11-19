@@ -14,7 +14,6 @@ public class JogoController {
 
 
     public static void iniciarJogo() {
-        tabuleiro = null;
         tabuleiro = new Tabuleiro(50,20,20);
         qtdJogadores = JogoView.intQtdJogadores(2, 6);
         registrarJogadores();
@@ -24,13 +23,15 @@ public class JogoController {
            finalizado = tabuleiro.getFinal(pos, tabuleiro.getQtdCasas());
            proximoJogador();
            TabuleiroView.showSituacaoAtual(tabuleiro);
-
            System.out.println("Posição do Jogador anterior é: "+pos+"\n\n");
+           //Mostra o ganhador
+           if (finalizado == true){
+               proximoJogador();
+               JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual));
+           }
        }
-       //Mostra o ganhador
-       JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual+=1));
-       JogoView.recomecar();
-       iniciarJogo();
+       //JogoView.recomecar();
+       //iniciarJogo();
     }
     private static void proximoJogador() {
         jogadorAtual++;
