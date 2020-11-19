@@ -6,27 +6,33 @@ import br.edu.uniritter.canoas.poo.jogo.view.TabuleiroView;
 
 public class JogoController {
     private static int qtdJogadores;
+    private static int pos;
     private static Tabuleiro tabuleiro;
     private static int jogadorAtual = 0;
     private static boolean finalizado = false;
     private static Dado dado = new Dado();
     private static Jogador jog = null;
-    //private static boolean fim = false;
+    private static boolean fim = false;
     
 
     public static void iniciarJogo() {
         tabuleiro = new Tabuleiro(50,20,20);
         qtdJogadores = JogoView.intQtdJogadores(2, 6);
         registrarJogadores();
-        finalizado = tabuleiro.verificaFim(tabuleiro);
+        //Recebe o valor true ou false do verificaFim
+        //finalizado = fim;
        while(! finalizado) {
            iniciarJogada();
            proximoJogador();
            TabuleiroView.showSituacaoAtual(tabuleiro);
-           System.out.println("O final é "+tabuleiro.verificaFim(tabuleiro));
-           System.out.println("Posição atual do Jogador: ");
+           //Mostra se está retornando o valor correto do verifica fim
+           // finalizado = fim;
+           System.out.println("O final é : "+tabuleiro.getFinal(pos, tabuleiro.getQtdCasas()));
+           System.out.println("Posição atual do Jogador: "+jogadorAtual+" é "+pos);
+           finalizado = tabuleiro.getFinal(pos, tabuleiro.getQtdCasas());
        }
-       JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual));
+       //Mostra o ganhador
+       JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual++));
        JogoView.recomecar();
        iniciarJogo();
     }
@@ -47,11 +53,13 @@ public class JogoController {
         }
     }
     private static void iniciarJogada() {
+        pos = 0;
         JogoView.mostraJogadorAtual(tabuleiro.getJogadores().get(jogadorAtual));
         JogoView.continuar();
         Jogador jogador = null;
         jogador = tabuleiro.getJogadores().get(jogadorAtual);
         jogador.avanca(dado.jogar());
+        pos = jogador.getPosicaoAtual()+1;
     }
 
     /*public static void iniciarJogoOld() {

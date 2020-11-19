@@ -87,24 +87,25 @@ public class Tabuleiro  {
         return this.casas.length;
     }
 
+    //Verificando a posição do jogador e comparando com o tamanho do tabuleiro.
     public boolean verificaFim(Tabuleiro tab){
         boolean retorno = false;
         for (int i = 0; i < tab.getQtdCasas(); i++) {
             if (tab.getJogadoresPos(i) > tab.getQtdCasas()){
-                retorno = false;
+                retorno = true;
 
             } else {
-                retorno =  true;
+                retorno =  false;
             }
         }
         return retorno;
     }
-
+    //Teste do verificaFim
     public boolean getFinal(int pos, int qtd){
-        if( qtd >= pos ){
-            return false;
-        } else {
+        if( pos > qtd ){
             return true;
+        } else {
+            return false;
         }
 
     }
