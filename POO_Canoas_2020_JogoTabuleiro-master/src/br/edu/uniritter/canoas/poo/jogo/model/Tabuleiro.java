@@ -1,6 +1,7 @@
 package br.edu.uniritter.canoas.poo.jogo.model;
 
 import br.edu.uniritter.canoas.poo.jogo.JogoController;
+import br.edu.uniritter.canoas.poo.jogo.view.CasaView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,16 @@ public class Tabuleiro  {
         }
         return retorno;
     }
+    public int getJogadoresPos(int pos) {
+        int retorno = 0;
+        for(Jogador jog : jogadores) {
+            if (jog.getPosicaoAtual() == pos) {
+                retorno = jog.getPosicaoAtual();
+            }
+        }
+        return retorno;
+    }
+
     public List<Jogador> getJogadores() {
         return jogadores;
     }
@@ -74,6 +85,19 @@ public class Tabuleiro  {
     }
     public int getQtdCasas() {
         return this.casas.length;
+    }
+
+    public boolean verificaFim(Tabuleiro tab){
+        boolean retorno = false;
+        for (int i = 0; i < tab.getQtdCasas(); i++) {
+            if (tab.getJogadoresPos(i) > tab.getQtdCasas()){
+                retorno = false;
+
+            } else {
+                retorno =  true;
+            }
+        }
+        return retorno;
     }
 
     public boolean getFinal(int pos, int qtd){
