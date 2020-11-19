@@ -100,7 +100,8 @@ public class Tabuleiro  {
         }
         return retorno;
     }
-    //Teste do verificaFim
+
+    //Método retorna true ou false se a posição do jogador form maior que o tamanho do tabuleiro
     public boolean getFinal(int pos, int qtd){
         if( pos > qtd ){
             return true;

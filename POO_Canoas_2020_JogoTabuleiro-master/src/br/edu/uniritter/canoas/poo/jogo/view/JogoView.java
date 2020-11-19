@@ -33,18 +33,29 @@ public class JogoView {
         System.out.println("Agora é a vez de "+jog.getNome());
     }
 
+    public static void mostraJogadorAnterior(Jogador jog) {
+        System.out.println(""+jog.getNome());
+    }
+
     public static void continuar() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("pressione enter para continuar");
+        System.out.println("Pressione enter para continuar");
         String nome  = scanner.nextLine();
     }
+
+    //Método para recomeçar a partida
     public static void recomecar() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("pressione enter para recomecar");
+        System.out.println("Pressione enter para recomeçar o jogo");
         String nome  = scanner.nextLine();
     }
+    //Método que mostra o granhador da partida
     public static void mostraGanhador(Jogador jog) {
-        System.out.println("O ganhador é: "+jog.getNome());
+
+        System.out.println("|-------------------------|");
+        System.out.println("|-----  FIM DE JOGO ------|");
+        System.out.println("|O ganhador é: "+jog.getNome());
+        System.out.println("|-------------------------|");
     }
 
 }

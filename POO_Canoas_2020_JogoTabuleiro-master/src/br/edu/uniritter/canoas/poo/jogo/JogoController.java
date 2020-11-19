@@ -11,28 +11,24 @@ public class JogoController {
     private static int jogadorAtual = 0;
     private static boolean finalizado = false;
     private static Dado dado = new Dado();
-    private static Jogador jog = null;
-    private static boolean fim = false;
-    
+
 
     public static void iniciarJogo() {
+        tabuleiro = null;
         tabuleiro = new Tabuleiro(50,20,20);
         qtdJogadores = JogoView.intQtdJogadores(2, 6);
         registrarJogadores();
-        //Recebe o valor true ou false do verificaFim
-        //finalizado = fim;
        while(! finalizado) {
            iniciarJogada();
+           //finalizado recebe o valor true ou false do verificaFim
+           finalizado = tabuleiro.getFinal(pos, tabuleiro.getQtdCasas());
            proximoJogador();
            TabuleiroView.showSituacaoAtual(tabuleiro);
-           //Mostra se está retornando o valor correto do verifica fim
-           // finalizado = fim;
-           System.out.println("O final é : "+tabuleiro.getFinal(pos, tabuleiro.getQtdCasas()));
-           System.out.println("Posição atual do Jogador: "+jogadorAtual+" é "+pos);
-           finalizado = tabuleiro.getFinal(pos, tabuleiro.getQtdCasas());
+
+           System.out.println("Posição do Jogador anterior é: "+pos+"\n\n");
        }
        //Mostra o ganhador
-       JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual++));
+       JogoView.mostraGanhador(tabuleiro.getJogadores().get(jogadorAtual+=1));
        JogoView.recomecar();
        iniciarJogo();
     }
